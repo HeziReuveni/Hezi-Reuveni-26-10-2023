@@ -140,7 +140,7 @@ function Home(): JSX.Element {
       style={{
         width:"70vmin",
         marginTop:"2rem",
-        marginBottom:"12rem"
+        marginBottom:"2rem"
       }}
             id="standard-adornment-amount"
             placeholder={inEnglish ? 'Enter the city name (In English)' : 'Enter English only'}
