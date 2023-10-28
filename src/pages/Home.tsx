@@ -45,36 +45,6 @@ function Home(): JSX.Element {
     getUserLocation()
   }, [])
 
-
-  const apiKey = 'a60b295f11cdd2eba554239693298462'; // Replace with your actual OpenWeatherMap API key
-  const latitude = 31.944;
-  const longitude = 34.833;
-
-  const getWeatherData = (latitude:any, longitude:any) => {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
-
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.name && data.weather && data.weather[0] && data.main) {
-          const cityName = data.name;
-          const weatherDescription = data.weather[0].description;
-          const temperature = data.main.temp - 273.15;
-        } else {
-          console.error('Invalid or incomplete data in the API response');
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching weather data:', error);
-      });
-  };
-
-  useEffect(() => {
-    getWeatherData(latitude, longitude);
-  }, []);
-  
-
-
   const responseUseWeatherData = useWeatherData(data, setWeatherData, setFiveDayForecast);
   const responseUseCitySearch = useCitySearch(query, setDisplayLit, setCities);
 
@@ -219,7 +189,7 @@ style={{
 {!isBoolean ? (
   <p>{convertToFahrenheit(weatherData.Temperature.Metric.Value)}</p>
 ) : !data[2] ? (
-  <p>Tempera123ture: {weatherData.Temperature.Metric.Value}°C</p>
+  <p>Temperature: {weatherData.Temperature.Metric.Value}°C</p>
 ) : (
   data[2]
 )}
