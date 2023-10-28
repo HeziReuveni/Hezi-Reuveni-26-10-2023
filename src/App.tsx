@@ -10,7 +10,6 @@ function App() {
     <BrowserRouter>
       <>
       <Fade top>
-
     <div>
     <NavbarComponent />
         <WaveBorder upperColor="#001f3f" lowerColor="white"  animationNegativeDelay={2} />

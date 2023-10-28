@@ -32,7 +32,7 @@ const NavbarComponent = () => {
               
             }}
             size="small" variant="contained">
-            Home
+            Hezi
           </Button>
         </Link>
         <Link to="/favorites">

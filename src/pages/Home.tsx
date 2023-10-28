@@ -219,7 +219,7 @@ style={{
 {!isBoolean ? (
   <p>{convertToFahrenheit(weatherData.Temperature.Metric.Value)}</p>
 ) : !data[2] ? (
-  <p>Temperature: {weatherData.Temperature.Metric.Value}°C</p>
+  <p>Tempera123ture: {weatherData.Temperature.Metric.Value}°C</p>
 ) : (
   data[2]
 )}
