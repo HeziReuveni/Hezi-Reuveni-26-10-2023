@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchProducts, fetchFiveDayForecast, getLocationKeyForCoordinates } from '../apis/weather.api';
+import { fetchProducts, fetchWeather, fetchFiveDayForecast, getLocationKeyForCoordinates } from '../apis/weather.api';
 import { City, WeatherApiResponse, WeatherData, FiveDayForecast } from '../interfaces/types';
 import { ContainerHomePage, ContainerFiveDays, BottomLeftButton, ContainerDay, TitleDay, ContentDay } from '../styles/styled';
 import Arrow from '../components/Arrow';
@@ -72,28 +72,11 @@ function Home(): JSX.Element {
   useEffect(() => {
     getWeatherData(latitude, longitude);
   }, []);
+  
 
 
   const responseUseWeatherData = useWeatherData(data, setWeatherData, setFiveDayForecast);
   const responseUseCitySearch = useCitySearch(query, setDisplayLit, setCities);
-
-
-  const fetchWeather = (cityKey: string) => {
-    // Assuming this function returns a Promise
-    return fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${cityKey}&apikey=e6Y9ql2Wvup64cNKIph2gNP1cWNnqfDO123`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        return data;
-      })
-      .catch((error) => {
-        throw new Error(`Error fetching weather data: ${error}`);
-      });
-  };
 
   const handleCityClick = (cityKey: string) => {
     if(cityKey){
