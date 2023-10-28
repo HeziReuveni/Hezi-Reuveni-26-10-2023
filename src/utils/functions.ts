@@ -39,12 +39,13 @@ export const getUserLocation = async () => {
         },
         (error) => {
           console.error('Error getting user location:', error);
-          reject(error);
+    
+          resolve({ latitude: 32.0853, longitude: 34.7818 }); 
         }
       );
     } else {
       console.error('Geolocation is not available in this browser.');
-      reject(new Error('Geolocation is not available'));
+      resolve({ latitude: 32.0853, longitude: 34.7818 }); 
     }
   });
 };

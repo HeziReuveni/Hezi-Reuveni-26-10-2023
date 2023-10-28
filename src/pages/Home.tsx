@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchProducts, fetchWeather, fetchFiveDayForecast, getLocationKeyForCoordinates } from '../apis/weather.api';
+import { fetchProducts, fetchWeather, fetchFiveDayForecast } from '../apis/weather.api';
 import { City, WeatherApiResponse, WeatherData, FiveDayForecast } from '../interfaces/types';
 import { ContainerHomePage, ContainerFiveDays, BottomLeftButton, ContainerDay, TitleDay, ContentDay } from '../styles/styled';
 import Arrow from '../components/Arrow';
@@ -7,7 +7,7 @@ import { Input, InputAdornment,  List, ListItem, ListItemText } from '@mui/mater
 import {BsSearch} from 'react-icons/bs'
 import {TbTemperatureFahrenheit, TbTemperatureCelsius} from 'react-icons/tb'
 import FavoriteButton from '../components/FavoriteButton';
-import { getDayOfWeek, getAverageTempForDay, celsiusToFahrenheit, getUserLocation,convertToFahrenheit } from '../utils/functions';
+import { getDayOfWeek, getAverageTempForDay, celsiusToFahrenheit,convertToFahrenheit } from '../utils/functions';
 import WaveBorder from '../components/WaveBorder';
 import sunny from './images/sunny.png'
 import winter from './images/winter.png'
@@ -38,12 +38,6 @@ function Home(): JSX.Element {
   const [inEnglish, setInEnglish] = useState<boolean>(true)
   const isBoolean = useSelector((state: RootState) => state.example.isBoolean);
 
-  
-
-
-  useEffect(() => {
-    getUserLocation()
-  }, [])
 
   const responseUseWeatherData = useWeatherData(data, setWeatherData, setFiveDayForecast);
   const responseUseCitySearch = useCitySearch(query, setDisplayLit, setCities);
@@ -189,7 +183,7 @@ style={{
 {!isBoolean ? (
   <p>{convertToFahrenheit(weatherData.Temperature.Metric.Value)}</p>
 ) : !data[2] ? (
-  <p>Temperature: {weatherData.Temperature.Metric.Value}°C</p>
+  <p>{weatherData.Temperature.Metric.Value}°C</p>
 ) : (
   data[2]
 )}

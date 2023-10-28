@@ -5,7 +5,7 @@ import sunny from '../pages/images/sunny.png'
 import winter from '../pages/images/winter.png'
 import cloudy from '../pages/images/cloudy.png'
 import Zoom from 'react-reveal/Zoom'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../utils/store';
 import { convertToFahrenheit, getUserLocation } from '../utils/functions'
 import loadingGif from './gifs/loading__.gif'
@@ -19,7 +19,6 @@ const TempCardToLocation = () => {
     const [loading, setLoading] = useState<boolean>(true);
 
     const isBoolean = useSelector((state: RootState) => state.example.isBoolean);
-    const dispatch = useDispatch()
       
       useEffect(() => {
         const fetchData = async () => {
@@ -61,8 +60,9 @@ const TempCardToLocation = () => {
         }
       }, [loading, coordinates]);
       
-      
 
+
+    
   return (
     <>
     {temp ? 
@@ -116,7 +116,6 @@ const TempCardToLocation = () => {
      </Zoom>
      : <img src={loadingGif} width="150vmin"/>
 }
-   
     </>
   )
 }
