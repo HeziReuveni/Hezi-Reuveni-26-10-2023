@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: 'http://dataservice.accuweather.com'
+    baseURL: process.env.REACT_APP_BASE_URL
 });
 
 export {};
