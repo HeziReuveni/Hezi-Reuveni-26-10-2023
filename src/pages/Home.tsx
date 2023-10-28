@@ -80,7 +80,7 @@ function Home(): JSX.Element {
 
   const fetchWeather = (cityKey: string) => {
     // Assuming this function returns a Promise
-    return fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${cityKey}&apikey=e6Y9ql2Wvup64cNKIph2gNP1cWNnqfDO`)
+    return fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${cityKey}&apikey=e6Y9ql2Wvup64cNKIph2gNP1cWNnqfDO123`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Network response was not ok: ${response.status}`);

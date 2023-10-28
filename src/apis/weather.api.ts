@@ -14,7 +14,7 @@ interface City {
     WeatherText: string;
   }
 
-const Key = 'e6Y9ql2Wvup64cNKIph2gNP1cWNnqfDO';
+const Key = 'e6Y9ql2Wvup64cNKIph2gNP1cWNnqfDO12';
 
 
 export const fetchProducts = async (query:string) => {
