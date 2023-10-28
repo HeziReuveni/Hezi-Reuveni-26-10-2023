@@ -1,8 +1,6 @@
 import {useState, useEffect} from 'react'
 import { ContainerDay, TitleDay } from '../styles/styled'
 import WaveBorder from './WaveBorder'
-import sunny from '../pages/images/sunny.png'
-import winter from '../pages/images/winter.png'
 import cloudy from '../pages/images/cloudy.png'
 import Zoom from 'react-reveal/Zoom'
 import { useSelector } from 'react-redux';
@@ -107,9 +105,7 @@ const TempCardToLocation = () => {
      padding:"1rem"
   }}
   >
-  {temp && temp > 25 && <img width="50vmin" src={sunny} />}
-        {temp && temp > 15 && temp && temp < 25 && (<img width="50vmin" src={cloudy} />)}
-        {temp && temp < 15 && <img width="50vmin" src={winter} />}
+<img width="50vmin" src={cloudy} />
   </div>
          </div>
        </ContainerDay>
