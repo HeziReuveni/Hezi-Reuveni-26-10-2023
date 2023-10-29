@@ -3,6 +3,7 @@ import { Button, Typography } from '@mui/material';
 import { AiFillHeart } from 'react-icons/ai';
 import { ContainerFavoriteButton } from '../styles/styled';
 import { CityData } from '../interfaces/types';
+import Zoom from 'react-reveal/Zoom';
 
 const FavoriteButton: React.FC<{ cityKey: string; cityData: CityData }> = ({
   cityKey,
@@ -53,6 +54,7 @@ const FavoriteButton: React.FC<{ cityKey: string; cityData: CityData }> = ({
           onClick={handleToggleFavorite}
           style={{
             textTransform: 'none',
+            fontFamily:"sans-serif"
           }}
           variant="contained"
           size="small"
@@ -60,15 +62,18 @@ const FavoriteButton: React.FC<{ cityKey: string; cityData: CityData }> = ({
           {favoriteItem ? 'Remove from Favorites' : 'Add to Favorites'}
         </Button>
       </Typography>
+<Zoom>
+
       <AiFillHeart
         style={{
           color: favoriteItem ? 'red' : 'rgba(80, 80, 80, 0.5)',
           transform: 'translateY(-2px)',
-          marginTop: '1rem',
+          marginTop: '1rem'
         }}
         size={30}
         color="rgba(80, 80, 80, 0.5)"
       />
+</Zoom>
     </ContainerFavoriteButton>
   );
 };

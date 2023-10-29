@@ -223,9 +223,12 @@ style={{
   <div
   style={{
     textAlign:"center",
+    fontFamily:"sans-serif"
   }}
   >
-   <h2>{!data[1] ? <h2>  {cities.find((city) => city.Key === selectedCity)?.LocalizedName}</h2> : data[1]}</h2> 
+   <h2
+
+   > {!data[1] ? <h2>  {cities.find((city) => city.Key === selectedCity)?.LocalizedName}</h2> : data[1]}</h2> 
     <p>{fiveDayForecast.Headline?.Text}</p>
     <div
     >

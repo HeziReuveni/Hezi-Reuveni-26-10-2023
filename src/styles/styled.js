@@ -11,7 +11,7 @@ const bounceAndDisappearAnimation = keyframes`
   }
   45% {
     opacity: 1;
-    transform: translateY(-20px); /* Adjust the distance for your desired effect */
+    transform: translateY(-20px); 
   }
   55% {
     opacity: 1;
@@ -61,6 +61,7 @@ export const ContainerFiveDays = styled.div`
   flex-wrap: wrap;
   justify-content: space-between; 
   grid-gap: 20px;
+  padding-bottom: 20px;
   @media (max-width: 768px) {
     flex-direction: column; 
   }
