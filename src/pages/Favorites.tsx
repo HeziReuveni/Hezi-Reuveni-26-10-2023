@@ -9,16 +9,10 @@ import {convertToFahrenheit} from '../utils/functions'
 import {TbTemperatureFahrenheit, TbTemperatureCelsius} from 'react-icons/tb'
 import {MdDeleteSweep} from 'react-icons/md'
 import { BottomLeftButton } from '../styles/styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, updateData } from '../utils/store';
-import Fade from 'react-reveal/Fade';
+import { useDispatch } from 'react-redux';
+import { updateData } from '../utils/store';
 import Zoom from 'react-reveal/Zoom';
-
-interface CityData {
-  name: string;
-  temperature: string;
-  weatherCondition: string;
-}
+import {CityData} from '../interfaces/types';
 
 const Favorites = () => {
   const [favoritesData, setFavoritesData] = useState<{ cityKey: string; cityData: CityData }[]>([]);
@@ -35,7 +29,6 @@ const Favorites = () => {
   useEffect(() => {
     const favorites: { cityKey: string; cityData: CityData }[] = JSON.parse(localStorage.getItem('favorites') || '[]');
     setFavoritesData(favorites);
-    console.log('Favorites:', favorites);
   }, []);
 
 

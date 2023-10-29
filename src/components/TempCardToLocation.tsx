@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../utils/store';
 import { convertToFahrenheit, getUserLocation } from '../utils/functions'
 import loadingGif from './gifs/loading__.gif'
+import { fetchWeatherData } from '../apis/weather.api.location'
 
 
 const TempCardToLocation = () => {
@@ -35,31 +36,18 @@ const TempCardToLocation = () => {
       useEffect(() => {
         if (!loading && coordinates) {
           const { latitude, longitude } = coordinates;
-          const apiKey = 'a60b295f11cdd2eba554239693298462';
-          const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
-          fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => {
-              if (data && data.name && data.weather && data.weather[0] && data.main) {
-                const cityName = data.name;
-                const weatherDescription = data.weather[0].description;
-                const temperatureKelvin = data.main.temp;
-                const temperatureCelsius = Math.floor(temperatureKelvin - 273.15);
-                setCity(cityName);
-                setWeather(weatherDescription);
-                setTemp(temperatureCelsius);
-              } else {
-                console.error('Invalid or incomplete data in the API response');
+      
+          fetchWeatherData(latitude, longitude)
+            .then((weatherData) => {
+              if (weatherData) {
+                setCity(weatherData.city);
+                setWeather(weatherData.weather);
+                setTemp(weatherData.temp);
               }
-            })
-            .catch((error) => {
-              console.error('Error fetching weather data:', error);
             });
         }
       }, [loading, coordinates]);
       
-
-
     
   return (
     <>

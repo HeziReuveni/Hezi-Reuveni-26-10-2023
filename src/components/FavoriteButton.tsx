@@ -2,12 +2,7 @@ import { useState } from 'react';
 import { Button, Typography } from '@mui/material';
 import { AiFillHeart } from 'react-icons/ai';
 import { ContainerFavoriteButton } from '../styles/styled';
-
-interface CityData {
-  name: string;
-  temperature: string;
-  weatherCondition: string;
-}
+import { CityData } from '../interfaces/types';
 
 const FavoriteButton: React.FC<{ cityKey: string; cityData: CityData }> = ({
   cityKey,
@@ -15,7 +10,7 @@ const FavoriteButton: React.FC<{ cityKey: string; cityData: CityData }> = ({
 }) => {
   const [favoriteItem, setFavoriteItem] = useState(false);
 
-  // Function to add or remove a city from favorites
+
   const handleToggleFavorite = () => {
     const favoriteCity = {
       cityKey,
@@ -32,18 +27,18 @@ const FavoriteButton: React.FC<{ cityKey: string; cityData: CityData }> = ({
     );
 
     if (isDuplicate) {
-      // Remove the city from favorites
+   
       const updatedFavorites = existingFavorites.filter(
         (item: { cityKey: string }) => item.cityKey !== cityKey
       );
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } else {
-      // Add the city to favorites
+    
       existingFavorites.push(favoriteCity);
       localStorage.setItem('favorites', JSON.stringify(existingFavorites));
     }
 
-    // Toggle the favorite status
+   
     setFavoriteItem(!isDuplicate);
   };
 

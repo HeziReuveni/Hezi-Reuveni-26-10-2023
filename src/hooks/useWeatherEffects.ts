@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchWeather, fetchFiveDayForecast, fetchProducts } from '../apis/weather.api'; 
 import { WeatherApiResponse, WeatherData, FiveDayForecast, City } from '../interfaces/types'; 
-import Alert from '@mui/material/Alert';
+
 
 export function useWeatherData(
 

@@ -43,3 +43,9 @@ export interface City {
     }[];
   }
   
+  export interface CityData {
+    name: string;
+    temperature: string;
+    weatherCondition: string;
+  }
+  

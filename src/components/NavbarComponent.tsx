@@ -28,8 +28,7 @@ const NavbarComponent = () => {
             style={{
               backgroundColor: "#DDDDDD",
               color: "#001f3f",
-              fontSize: thisPage ? '0.8rem' : '0.6rem'
-              
+              fontSize: thisPage ? '0.8rem' : '0.6rem',
             }}
             size="small" variant="contained">
             Home
