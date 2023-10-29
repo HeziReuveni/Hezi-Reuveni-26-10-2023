@@ -1,5 +1,32 @@
 import styled, { keyframes } from 'styled-components';
 
+const bounceAndDisappearAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(-20px); /* Adjust the distance for your desired effect */
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+`;
+
 export const ContainerHomePage = styled.div`
     display:flex;
       align-items:center;
@@ -18,20 +45,13 @@ align-items: center;
 justify-content: space-around;
 `
 
-const bounceAnimation = keyframes`
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-`;
 
 export const ContainerArrow = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: 50px;
   right: 30px;
-  animation: ${bounceAnimation} 2.5s ease-in-out forwards;
+  animation: ${bounceAndDisappearAnimation} 3s ease-in-out forwards;
+  opacity: 0;
 `;
 
 
@@ -52,6 +72,8 @@ export const ContainerFavoriteButton = styled.div`
   justify-content: space-between;
   flex-direction: column;
   height: 100%;
+  opacity: 1; 
+  transition: opacity 1s ease-in-out; 
 `;
 
 
@@ -78,8 +100,8 @@ box-shadow: 2px 2px 5px gray;
     transform: translateY(-5px); 
   }
   &:focus {
-    outline: none; /* Remove the default focus outline */
-    box-shadow: 0 0 5px #1976D2; /* Add a custom box-shadow when focused */
+    outline: none; 
+    box-shadow: 0 0 5px #1976D2; 
   }
 `;
 
@@ -90,6 +112,8 @@ export const ContainerDay = styled.div`
   background-color: #DDDDDD;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  opacity: 1; 
+  transition: opacity 1s ease-in-out;
 `;
 
 export const TitleDay = styled.div`
@@ -117,9 +141,9 @@ export const ContentDay = styled.div`
   letter-spacing: 1px;
   font-weight: bold;
   height:10vh;
-          display:flex;
-          align-items:center;
-          justify-content:space-around;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
           
 `
 

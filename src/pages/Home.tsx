@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { fetchProducts, fetchWeather, fetchFiveDayForecast } from '../apis/weather.api';
+import {  useState } from 'react';
+import {  fetchWeather, fetchFiveDayForecast } from '../apis/weather.api';
 import { City, WeatherApiResponse, WeatherData, FiveDayForecast } from '../interfaces/types';
 import { ContainerHomePage, ContainerFiveDays, BottomLeftButton, ContainerDay, TitleDay, ContentDay } from '../styles/styled';
 import Arrow from '../components/Arrow';
@@ -23,8 +23,6 @@ import {setIsBoolean } from '../utils/store'
 
 
 
-
-
 function Home(): JSX.Element {
   const [cities, setCities] = useState<City[]>([]);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
@@ -32,7 +30,6 @@ function Home(): JSX.Element {
   const [fiveDayForecast, setFiveDayForecast] = useState<FiveDayForecast | null>(null);
   const [query, setQuery] = useState<string>('');
   const [displayList, setDisplayLit] = useState<boolean>(false)
-  const [convertButton, setConvertButton] = useState<boolean>(false)
   const data = useSelector((state: RootState) => state.example.data);
   const dispatch = useDispatch();
   const [inEnglish, setInEnglish] = useState<boolean>(true)
@@ -48,7 +45,7 @@ function Home(): JSX.Element {
       console.log(cityKey)
     }
     setSelectedCity(cityKey); 
-    fetchWeather(cityKey) // ומביאה לי מזג אוויר KEY מקבלת את ה 
+    fetchWeather(cityKey) 
       .then((response: WeatherApiResponse) => {
         setWeatherData(response.data[0]);
         
@@ -130,6 +127,7 @@ style={{
     </ListItem>
   ))}
 </List>}
+
 <div
 style={{
   display:"flex",
@@ -139,19 +137,21 @@ style={{
 >
 {!weatherData && <TempCardToLocation/>}
 {weatherData && (
-        <ContainerDay
-        style={{
-          width: displayList ? '45vmin' : '60vmin',
-          marginTop:"1rem",
-          height:"35vh"
+  <Fade>
+  <div>
+  <ContainerDay
+  style={{
+    width: displayList ? '45vmin' : '60vmin',
+    marginTop:"1rem",
+    height:"35vh"
         }}
         >
           <TitleDay
           style={{
             fontSize: displayList ? "1rem" : "1.2rem"
+      
           }}
           >
-
           {!data[1] ? <h2> {cities.find((city) => city.Key === selectedCity)?.LocalizedName}</h2> : data[1]}
           </TitleDay>
           <WaveBorder upperColor="#001f3f" lowerColor="#DDDDDD" animationNegativeDelay={2} />
@@ -197,20 +197,27 @@ style={{
           </div>
           </div>
         </ContainerDay>
+        </div>
+        </Fade>
       )}
       <div
+
       >
 {displayList && selectedCity && weatherData && (
-  <FavoriteButton
-    cityKey={selectedCity!}
-    cityData={{
-      name: cities.find((city) => city.Key === selectedCity)?.LocalizedName || '',
-      temperature: weatherData?.Temperature.Metric.Value + '°C' || '',
-      weatherCondition: weatherData?.WeatherText || '',
-    }}
-  />
+  <Fade>
+
+    <FavoriteButton
+      cityKey={selectedCity!}
+      cityData={{
+        name: cities.find((city) => city.Key === selectedCity)?.LocalizedName || '',
+        temperature: weatherData?.Temperature.Metric.Value + '°C' || '',
+        weatherCondition: weatherData?.WeatherText || '',
+      }}
+    />
+  </Fade>
 )}
       </div>
+      
 </div>
 {fiveDayForecast && (
   <div
@@ -218,7 +225,7 @@ style={{
     textAlign:"center",
   }}
   >
-   <h2> Weekly forecast in {!data[1] ? <h2>  {cities.find((city) => city.Key === selectedCity)?.LocalizedName}</h2> : data[1]}</h2> 
+   <h2>{!data[1] ? <h2>  {cities.find((city) => city.Key === selectedCity)?.LocalizedName}</h2> : data[1]}</h2> 
     <p>{fiveDayForecast.Headline?.Text}</p>
     <div
     >

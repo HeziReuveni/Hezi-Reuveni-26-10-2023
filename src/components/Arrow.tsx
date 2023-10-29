@@ -1,4 +1,4 @@
-import { BsFillArrowDownSquareFill } from 'react-icons/bs';
+import { BiSolidDownArrow } from 'react-icons/bi';
 import { useMediaQuery } from "react-responsive";
 import { ContainerArrow } from '../styles/styled';
 
@@ -7,7 +7,7 @@ const Arrow = () => {
 
   return (
     <ContainerArrow>
-      {isTabletOrMobile && <BsFillArrowDownSquareFill size={30} color='#1976D2'/>}
+      {isTabletOrMobile && <BiSolidDownArrow size={30} color='#1976D2'/>}
     </ContainerArrow>
   );
 }
